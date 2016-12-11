@@ -1,4 +1,4 @@
-gem "sequel", "~"
-gem "sinatra", "~"
-gem "json", "~"
-# gem "pry", "~"
+gem "sequel"
+gem "sinatra"
+gem "json"
+# gem "pry"
