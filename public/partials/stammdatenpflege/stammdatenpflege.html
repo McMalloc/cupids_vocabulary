@@ -1,0 +1,16 @@
+<div id="stammdatenpflegeCtrlEl" class="full-height" ng-controller="stammdatenpflegeController as stammdatenpflege">
+
+    <jqx-tabs jqx-on-created="initTabs()" jqx-on-selected="tabSelected()" jqx-settings="tabSettings" class="jqx-hideborder">
+        <ul>
+            <li translate style="margin-left: 24px;">Stammdatenpflege.AnlagenTab</li>
+            <li translate>Stammdatenpflege.WerkstoffeTab</li>
+            <li translate>Stammdatenpflege.KampagnenTab</li>
+        </ul>
+        <!--<div>-->
+            <div><div ng-if="showAnlagenDatenblatt" class="full-height" ng-include="'partials/stammdatenpflege/stammdatenpflege_anlagen.html'"></div></div>
+            <div><div ng-if="showWerkstoffDatenblatt" class="full-height" ng-include="'partials/stammdatenpflege/stammdatenpflege_werkstoffe.html'"></div></div>
+            <div><div ng-if="showKampagnenDatenblatt" class="full-height" ng-include="'partials/stammdatenpflege/stammdatenpflege_kampagnen.html'"></div></div>
+        <!--</div>-->
+    </jqx-tabs>
+
+</div>

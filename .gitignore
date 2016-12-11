@@ -1,0 +1,8 @@
+node_modules
+dist/
+.tmp
+app.yaml
+.idea
+.sass-cache
+profiles.csv
+profiles.db

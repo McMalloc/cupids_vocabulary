@@ -1,0 +1,99 @@
+<!doctype html>
+<html ng-app="okcVis">
+<head>
+    <title>Cupid's Vocabulary</title>
+    <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="libs/angular.js"></script>
+    <link rel="stylesheet" href="libs/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/features.js"></script>
+    <script src="scripts/essays.js"></script>
+
+</head>
+<body ng-controller="mainController as main">
+
+<script type="text/template" id="feature-template">
+
+</script>
+
+<div style="height: 100%;" class="fluid-container">
+
+    <div ng-controller="featuresController as features" class="col-sm-4">
+        <h3>Features</h3>
+        <div class="row select-row">
+            <div class="col-md-12">
+                <span ng-repeat="f in features.features">
+                    <label id="checkbox-feature-{{e.id}}">
+                        <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.id}}"/><div>{{f.name}}</div>
+                    </label>
+                </span>
+            </div>
+        </div>
+
+        <div id="feature-row" class="row">
+            <div ng-repeat="f in features.features" id="tile-feature{{f.id}}" ng-if="f.visible" class="col-sm-6 col-lg-4">
+                    <div class="feature-tile">
+                        <label for="{{f.name}}-feature-select">{{f.name}}</label>
+                        <select name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
+                            <option ng-repeat="option in f.options">{{option}}</option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!--ESSAYS-->
+    <div ng-controller="essaysController as essays" class="col-sm-8">
+        <h3>Essays</h3>
+        <!--<pre>{{essays.essays | json}}</pre>-->
+        <div class="row select-row">
+            <div class="col-md-12">
+                <span ng-repeat="e in essays.essays">
+                    <label id="checkbox-essay-{{e.id}}">
+                        <input ng-model="e.visible" type="checkbox" for="checkbox-essay-{{e.id}}"/><div>{{e.name}}</div>
+                    </label>
+                </span>
+            </div>
+        </div>
+
+
+        <div id="essay-row" class="row">
+            <div ng-repeat="e in essays.essays" id="tile-essay{{e.id}}" ng-if="e.visible" class="col-sm-6 col-lg-4">
+                <div class="essay-tile">
+                    <div class="remove-btn">&times;</div>
+                    <p>{{e.name}}</p>
+                    <bargraph></bargraph>
+                    <div class="essay-bars">
+                        <div class="essay-bar" style="height: 100px; margin-top: 0px;">
+                            <div class="bar-label">1.500</div>
+                            <div class="bar-label-2">Wort 1</div>
+                        </div>
+                        <div class="essay-bar" style="height: 66px; margin-top: 34px;">
+                            <div class="bar-label">1.000</div>
+                            <div class="bar-label-2">Wort 2</div>
+                        </div>
+                        <div class="essay-bar" style="height: 60px; margin-top: 40px;">
+                            <div class="bar-label">900</div>
+                            <div class="bar-label-2">Wort 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
+                <a href="about">About</a>&emsp;|&emsp;2016 Robert Wlcek
+            </div>
+        </div>
+    </div>
+
+</footer>
+</body>
+</html>

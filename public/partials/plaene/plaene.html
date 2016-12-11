@@ -1,0 +1,69 @@
+<div id="plaeneCtrlEl" class="container" style="padding-top: 80px; margin-top: -40px;" ng-controller="plaeneController as plaene">
+
+    <div class="row">
+        <div class="ten columns offset-by-one">
+            <h3 class="float-left">{{"Plaene.Ueberschrift" | translate}}</h3>
+            <div class="float-right">
+                <jqx-check-box
+                    jqx-on-change="archiveChanged()">
+                    {{"Plaene.ArchivierteAnzeigen" | translate}}</jqx-check-box>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ten columns offset-by-one">
+            <jqx-grid
+                    class="jqx-hideborder"
+                    jqx-on-rowclick="planSelected()"
+                jqx-source="gridSource"
+                jqx-settings="gridSettings"
+                jqx-columns="gridColumns">
+
+            </jqx-grid>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ten columns offset-by-one">
+            <jqx-button jqx-disabled="empty(selectedPlan)" jqx-settings="viewButton" ng-click="view()">
+                <i class="fa fa-eye"></i>&ensp;{{"Plaene.Ansehen" | translate}}
+            </jqx-button>
+            <jqx-button jqx-disabled="empty(selectedPlan)" jqx-settings="duplicateButton" ng-click="duplicate()">
+                <i class="fa fa-clone"></i>&ensp;{{"Plaene.Duplizieren" | translate}}
+            </jqx-button>
+            <jqx-button jqx-disabled="empty(selectedPlan)" jqx-settings="editButton" ng-click="edit()">
+                <i class="fa fa-pencil"></i>&ensp;{{"Plaene.Aendern" | translate}}
+            </jqx-button>
+            <jqx-button jqx-settings="newButton" ng-click="new()" class="right-action">
+                <i class="fa fa-file-o"></i>&ensp;{{"Plaene.Neu" | translate}}
+            </jqx-button>
+            <hr style="margin: 24px 0;" />
+        </div>
+    </div>
+
+    <div ng-if="!empty(selectedPlan)" class="row">
+        <div class="ten columns offset-by-one">
+            <h4>{{"Plaene.Details" | translate}}</h4>
+        </div>
+        <div class="three columns offset-by-one">
+            <h5>{{"Plaene.Bezeichnung" | translate}}</h5>
+            <p>{{selectedPlan.name}}</p>
+            <h5>{{"Plaene.Besitzer" | translate}}</h5>
+            <p>{{selectedPlan.user_lastedit}}</p>
+            <h5>{{"Plaene.Status" | translate}}</h5>
+            <p><span class="p-status-{{selectedPlan.status_id}}">{{ "Plaene.Status" +  selectedPlan.status_id | translate}}</span></p>
+            <!--<p><span class="p-status-{{selectedPlan.status}}">{{selectedPlan.status}}</span></p>-->
+        </div>
+        <div class="seven columns">
+            <h5>{{"Plaene.Bemerkungen" | translate}}</h5>
+            <jqx-panel jqx-settings="panelSettings" class="jqx-hideborder">
+                <p ng-repeat="b in selectedPlan.bemerkungen">
+                    <span class="comment-meta">{{b.user_lastedit}}, {{b.lastedit | amDateFormat:'MM.DD.YYYY HH:mm'}}</span> <br />
+                    {{b.bemerkung}}
+                </p>
+            </jqx-panel>
+        </div>
+    </div>
+
+</div>

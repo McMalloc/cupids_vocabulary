@@ -1,0 +1,70 @@
+.tile {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  padding: 12px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.feature-tile {
+  @extend .tile;
+}
+
+.feature-tile select {
+  width: 100%;
+}
+
+.essay-bar {
+  border-right: 2px solid white;
+  box-sizing: border-box;
+  width: 33.3%;
+  background-color: #333;
+  float:left;
+  position: relative;
+}
+
+.essay-tile {
+  @extend .tile;
+  padding-bottom:30px;
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+}
+
+.remove-btn {
+  position: absolute;
+  top: 12px;
+  padding-bottom: 2px;
+  right: 12px;
+  cursor: default;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.essay-bars {
+  padding-bottom: 105px;
+  border-bottom: 2px dotted #333;
+  margin-bottom: 3px;
+}
+
+.bar-label {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  color: white;
+}
+
+.bar-label-2 {
+  position: absolute;
+  bottom: -28px;
+  color: #333;
+  left: 3px;
+}

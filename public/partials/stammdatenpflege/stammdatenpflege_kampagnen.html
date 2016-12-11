@@ -1,0 +1,76 @@
+<div id="stammdatenpflegeKampagneCtrlEl" class="padded-full-height" ng-controller="stammdatenpflegeKampagnenController as stammdatenpflegeKampagne">
+
+    <div class="container padded-full-height" style="padding-top: 24px;">
+
+        <div class="row padded-full-height">
+
+            <div class="four columns padded-full-height">
+                <i class="fa fa-spin fa-cog fa-2x" ng-if="!listboxSource"></i>
+                <jqx-list-box
+                        jqx-on-select="showKampagne()"
+                        class="jqx-hideborder"
+                        jqx-settings="listboxSettings"
+                        jqx-source="listboxSource">
+
+                </jqx-list-box>
+            </div>
+
+            <div ng-if="!model.id" class="eight columns">
+                <p class="text-info" translate>Stammdatenpflege.CTA</p>
+            </div>
+            <div ng-if="model.id" class="eight columns">
+                <h3>{{"Stammdatenpflege.KampagnenUeberschrift" | translate}}</h3>
+                <form name="stammdatenpflegeKampagne.kampagneform">
+                    <div class="row">
+                        <div class="one-half column">
+                            <fieldset>
+                                <p>
+                                    <legend>{{"Stammdatenpflege.KampagneName" | translate}}</legend>
+                                    <input
+                                            ng-required="true"
+                                            ng-maxlength="50"
+                                            type="text"
+                                            name="wkst_nr"
+                                            id="input-kampagne-name"
+                                            ng-model="model.name" />
+                                </p>
+                            </fieldset>
+                        </div>
+                        <div class="one-half column">
+                            <fieldset>
+                                <p>
+                                    <legend>{{"Stammdatenpflege.KampagneBemerkung" | translate}}</legend>
+                                    <textarea
+                                            name="bemerkung"
+                                            id="input-kampagne-bemerkung"
+                                            ng-model="model.bemerkung">
+                                        </textarea>
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+
+
+
+                <div>
+                    <jqx-button ng-click="cancelEditing()">{{"Form.Abbrechen" | translate}}</jqx-button>
+                    <jqx-button
+                            class="right-action"
+                            jqx-template="primary"
+                            ng-click="saveForm()"
+                            ng-disabled="stammdatenpflegeKampagne.kampagneform.$pristine || stammdatenpflegeKampagne.kampagneform.$invalid">
+                        {{"Form.Speichern" | translate}}</jqx-button>
+                </div>
+
+                <hr class="double-extra-margin" />
+                <p ng-show="model.firstedit">
+                    {{"Form.zuletztBearbeitet" | translate}} {{model.user_lastedit}} {{"Form.am" | translate}} {{model.lastedit | amDateFormat:'DD.MM.YYYY, HH:mm'}}<br />
+                    {{"Form.erstellt" | translate}} {{model.user_firstedit}} {{"Form.am" | translate}} {{model.firstedit | amDateFormat:'DD.MM.YYYY, HH:mm'}}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

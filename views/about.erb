@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="okcVis">
+<head>
+    <title>About Cupid's Vocabulary</title>
+    <link rel="stylesheet" href="libs/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<div class="container">
+
+    <div class="row">
+        <h1 style="text-align: center;"><a style="color: inherit; border: none;" href="/">&#128149;</a></h1>
+
+        <div class="col-sm-5 col-lg-3 col-lg-offset-3 col-sm-offset-1">
+            <p>
+                This is a visualization of 59.946 profiles from the OKCupid database, scraped by Albert Y. Kim and
+                Adriana Escobedo-Land (repository <a href="https://github.com/rudeboybert/JSE_OkCupid">here</a>).
+            </p>
+        </div>
+        <div class="col-sm-5 col-lg-3">
+            <p>
+                This web application uses the following libraries:
+            </p>
+            <div><a href="https://angularjs.org/">Angular</a></div>
+            <div><a href="http://getbootstrap.com/">Bootstrap</a></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 48px;">
+        <div class="col-sm-10 col-lg-6 col-lg-offset-3 col-sm-offset-1">
+            <p>If you are tired of statistics, take a look at this example record straight from the database:</p>
+            <table id="example-record">
+            <% record[0].each do |k, v| %>
+                <tr>
+                    <td><%= k %></td>
+                    <td><%= v %></td>
+                </tr>
+            <% end %>
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

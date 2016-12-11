@@ -1,0 +1,33 @@
+/* Base for label styling */
+input[type="checkbox"] {
+  display:none;
+}
+
+label {
+  position: relative;
+}
+
+input[type="checkbox"] {
+
+  &:checked + div {
+    background-color: #333;
+    color: white;
+  }
+
+  &:checked:focus + div, &:not(:checked):focus + div {
+    color: green;
+  }
+
+  & + div {
+    border: 2px solid rgba($grey, 0.7);
+    padding: 1px 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #4778d9!important;
+}

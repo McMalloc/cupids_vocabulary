@@ -1,0 +1,13 @@
+h3 {
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #ccc;
+}
+
+a {
+  border-bottom: 1px solid $bootstrapblue;
+
+  &:hover {
+    text-decoration: none;
+
+  }
+}

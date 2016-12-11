@@ -1,0 +1,229 @@
+<div id="stammdatenpflegeWerkstoffeCtrlEl" class="padded-full-height" ng-controller="stammdatenpflegeWerkstoffeController as stammdatenpflegeWerkstoffe">
+
+    <div class="container padded-full-height" style="padding-top: 24px;">
+
+        <div class="row padded-full-height">
+
+            <div class="four columns padded-full-height">
+                <i class="fa fa-spin fa-cog fa-2x" ng-if="!listboxSource"></i>
+                <jqx-list-box
+                        jqx-on-select="showWerkstoff()"
+                        class="jqx-hideborder"
+                        jqx-settings="listboxSettings"
+                        jqx-source="listboxSource">
+
+                </jqx-list-box>
+            </div>
+
+            <div ng-if="!model.id" class="eight columns">
+                <p class="text-info" translate>Stammdatenpflege.CTA</p>
+            </div>
+            <div ng-if="model.id" class="eight columns">
+                <h3>{{"Stammdatenpflege.WerkstoffUeberschrift" | translate}}</h3>
+                    <form name="stammdatenpflegeWerkstoffe.werkstoffform">
+                        <div class="row">
+                            <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.WerkstoffNummer" | translate}}</legend>
+                                        <input
+                                                ng-required="true"
+                                                ng-maxlength="5"
+                                                type="text"
+                                                name="wkst_nr"
+                                                id="input-werkstoff-wkst_nr"
+                                                ng-model="model.wkst_nr" />
+                                    </p>
+                                </fieldset>
+                            </div>
+                            <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.WerkstoffEmpfaenger" | translate}}</legend>
+                                        <jqx-input type="text" name="empfaenger" id="input-werkstoff-empfaenger" ng-model="model.empfaenger" />
+                                    </p>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.WerkstoffBemerkung" | translate}}</legend>
+                                        <textarea type="text" name="bemerkung" id="input-werkstoff-bemerkung" ng-model="model.bemerkung" />
+                                    </p>
+                                </fieldset>
+                                    </div>
+                                    <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.Werkstoffvormaterialbemerkung" | translate}}</legend>
+                                        <textarea type="text" name="vormaterialbemerkung" id="input-werkstoff-vormaterialbemerkung" ng-model="model.vormaterialbemerkung" />
+                                    </p>
+                                </fieldset>
+                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.WerkstoffDichteGrenzwert" | translate}}</legend>
+                                        <jqx-input type="text" name="dichte_Grenzwert" id="input-werkstoff-dichte_Grenzwert" ng-model="model.dichte_Grenzwert" />
+                                    </p>
+                                </fieldset>
+                            </div>
+                            <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.Werkstoffh2_Grenzwert" | translate}}</legend>
+                                        <jqx-input type="text" name="h2_Grenzwert" id="input-werkstoff-h2_Grenzwert" ng-model="model.h2_Grenzwert" />
+                                    </p>
+                                </fieldset>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="one-half column">
+                                <fieldset>
+                                    <p>
+                                        <legend>{{"Stammdatenpflege.Werkstoffkampagnen_id" | translate}}</legend>
+                                        <jqx-combo-box
+                                                type="text"
+                                                jqx-settings="kampagnenComboboxSettings"
+                                                jqx-source="kampagnen"
+                                                name="kampagnen_id"
+                                                id="input-werkstoff-kampagnen_id"
+                                                ng-model="model.kampagnen_id">
+                                        </jqx-combo-box>
+                                    </p>
+                                </fieldset>
+                                </div>
+                                <div class="one-half column">
+                                    <fieldset>
+                                        <p>
+                                            <jqx-check-box
+                                                    name="sr"
+                                                    id="input-werkstoff-sr"
+                                                    ng-true-value="1"
+                                                    ng-false-value="0"
+                                                    ng-model="model.sr">
+                                                {{"Stammdatenpflege.Werkstoffsr" | translate}}</jqx-check-box>
+                                        </p>
+                                    </fieldset>
+                                </div>
+                            </div>
+                    </form>
+
+                    <div class="double-extra-margin">
+                        <jqx-button ng-click="cancelEditing()">{{"Form.Abbrechen" | translate}}</jqx-button>
+                        <jqx-button
+                                class="right-action"
+                                jqx-template="primary"
+                                ng-click="saveForm()"
+                                ng-disabled="stammdatenpflegeWerkstoffe.werkstoffform.$pristine || stammdatenpflegeWerkstoffe.werkstoffform.$invalid">
+                            {{"Form.Speichern" | translate}}</jqx-button>
+                    </div>
+
+                <hr class="double-extra-margin" />
+
+                <h3 class="extra-margin">{{"Stammdatenpflege.WerkstoffAnlagenListe" | translate}}</h3>
+                    <p>
+                        <table class="form-table" ng-if="model.werkstoffAnlageListe.length > 0">
+                            <thead>
+                            <tr>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.anlagen_id</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.effd</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.endd</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.giess_GeschwindigkeitsFaktor</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.giess_Unterbrechungszeit</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.prozent_Anlagenbelegung</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.pruefzeit_QM</th>
+                                <th translate>Stammdatenpflege.werkstoffAnlageListe.bemerkung</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr
+                                    ng-form
+                                    name="anlage.form"
+                                    ng-repeat="anlage in model.werkstoffAnlageListe">
+                                <td>
+                                    <!--<jqx-combo-box jqx-source="anlagen" ng-model="anlage.anlagen_id"></jqx-combo-box>-->
+                                    <select required ng-model="anlage.anlagen_id" ng-options="anlage.id as anlage.name for anlage in anlagen">
+                                    </select>
+                                </td>
+                                <td><jqx-date-time-input
+                                        jqx-settings="dateTimeSettings"
+                                        id="anlage-effd-input-{{anlage.id}}"
+                                        jqx-ng-model
+                                        name="beginn-{{anlage.id}}"
+                                        ng-model="anlage.effd">
+                                </jqx-date-time-input></td>
+                                <td><jqx-date-time-input
+                                        jqx-settings="dateTimeSettings"
+                                        id="anlage-endd-input-{{anlage.id}}"
+                                        jqx-ng-model
+                                        name="end-{{anlage.id}}"
+                                        ng-model="anlage.endd">
+                                </jqx-date-time-input></td>
+                                <td><input
+                                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                                        type="number"
+                                        step="0.1"
+                                        name="giess_GeschwindigkeitsFaktor-{{anlage.id}}"
+                                        ng-model="anlage.giess_GeschwindigkeitsFaktor"/></td>
+                                <td><input
+                                        ng-pattern="/^[0-9]+?$/"
+                                        type="number"
+                                        step="1"
+                                        name="giess_Unterbrechungszeit-{{anlage.id}}"
+                                        ng-model="anlage.giess_Unterbrechungszeit"/></td>
+                                <td><input
+                                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                                        type="number"
+                                        step="0.1"
+                                        name="prozent_Anlagenbelegung-{{anlage.id}}"
+                                        ng-model="anlage.prozent_Anlagenbelegung"/></td>
+                                <td><input
+                                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                                        type="number"
+                                        step="0.1"
+                                        name="pruefzeit_QM-{{anlage.id}}"
+                                        ng-model="anlage.pruefzeit_QM"/></td>
+                                <td><textarea ng-model="anlage.bemerkung" /></td>
+                                <td class="small-table-button-td">
+                                    <jqx-button
+                                            class="small-table-button"
+                                            id="anlage-save-cb-{{anlage.id}}"
+                                            ng-show="anlage.form.$dirty"
+                                            ng-disabled="anlage.form.$invalid"
+                                            ng-click="saveWerkstoffAnlageListe($index)">
+                                        <i class="fa fa-floppy-o"></i></jqx-button>
+                                </td>
+                                <td class="small-table-button-td">
+                                    <jqx-button
+                                            class="small-table-button"
+                                            id="anlage-discard-cb-{{anlage.id}}"
+                                            ng-show="anlage.form.$dirty"
+                                            data-index="$index"
+                                            ng-click="removeWerkstoffAnlageListe($index)">
+                                        <i class="fa fa-trash"></i></jqx-button>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                    <jqx-button class="extra-margin" ng-click="addAnlage()"><i class="fa fa-plus"></i>&ensp;{{"Stammdatenpflege.werkzeugAnlageHinzufuegen" | translate}}</jqx-button>
+                </p>
+
+                <!--<hr class="double-extra-margin" />-->
+                <p ng-show="model.firstedit">
+                    {{"Form.zuletztBearbeitet" | translate}} {{model.user_lastedit}} {{"Form.am" | translate}} {{model.lastedit | amDateFormat:'DD.MM.YYYY, HH:mm'}}<br />
+                    {{"Form.erstellt" | translate}} {{model.user_firstedit}} {{"Form.am" | translate}} {{model.firstedit | amDateFormat:'DD.MM.YYYY, HH:mm'}}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
