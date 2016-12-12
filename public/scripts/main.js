@@ -2,22 +2,44 @@ OKC.controller("mainController",
 		["$scope", "$http", function ($scope, $http) {
 
 			var updateGraphs = function (res) {
-				$scope.$broadcast("newdate", res.data);
+				$scope.$broadcast("redraw", res.data);
 			};
 
 			var baseHeight = 100;
 
-			$scope.$on("getdata", function(params) {
+			$scope.$on("featureupdate", function(event) {
+				getData();
+			});
+
+			$scope.$on("numberupdate", function(event, data) {
+				$scope.wantedNumber = data;
+				//getData();
+			});
+
+			$scope.$on("essayupdate", function(event, args) {
+				$scope.wantedEssays = [];
+				_.each(args, function(essay) {
+					if (essay.visible) $scope.wantedEssays.push(essay.id);
+				});
+				getData();
+			});
+
+			$scope.wantedEssays = [];
+			$scope.wantedFeatures = [];
+			$scope.wantedNumber = 3;
+
+			var getData = function() {
 				$http({
-					type: "POST",
+					method: "POST",
 					url: "/counts",
 					data: JSON.stringify({
-						number: 3,
-						features: JSON.stringify(params),
-						essays: [0,1,2,3,4,5,6,7,8,9]
-					}),
+							number: $scope.wantedNumber,
+							essays: $scope.wantedEssays,
+							//features: $scope.wantedFeatures
+							features: {"drinks": "socially", "sex": "f"}
+						}),
 					dataType: "json",
 					contentType: 'application/json'
 				}).then(updateGraphs);
-			});
+			};
 }]);

@@ -11,6 +11,7 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/features.js"></script>
     <script src="scripts/essays.js"></script>
+    <script src="directives/bargraph.js"></script>
 
 </head>
 <body ng-controller="mainController as main">
@@ -53,33 +54,26 @@
             <div class="col-md-12">
                 <span ng-repeat="e in essays.essays">
                     <label id="checkbox-essay-{{e.id}}">
-                        <input ng-model="e.visible" type="checkbox" for="checkbox-essay-{{e.id}}"/><div>{{e.name}}</div>
+                        <input
+                                ng-change="essays.updateData()"
+                                ng-model="e.visible"
+                                type="checkbox"
+                                for="checkbox-essay-{{e.id}}"/><div>{{e.name}}</div>
                     </label>
                 </span>
+                <br />
+                <label for="wordnumber">Number of words: </label>
+                <input ng-change="essays.updateNumber()" style="width: 48px; text-align: center;" id="wordnumber" type="text" ng-model="essays.number" />
             </div>
         </div>
 
 
         <div id="essay-row" class="row">
             <div ng-repeat="e in essays.essays" id="tile-essay{{e.id}}" ng-if="e.visible" class="col-sm-6 col-lg-4">
-                <div class="essay-tile">
-                    <div class="remove-btn">&times;</div>
+                <div ng-if="essays.data['essay'+e.id]" class="essay-tile">
+                    <div ng-click="essays.removeEssay(e.id)" class="remove-btn">&times;</div>
                     <p>{{e.name}}</p>
-                    <bargraph></bargraph>
-                    <div class="essay-bars">
-                        <div class="essay-bar" style="height: 100px; margin-top: 0px;">
-                            <div class="bar-label">1.500</div>
-                            <div class="bar-label-2">Wort 1</div>
-                        </div>
-                        <div class="essay-bar" style="height: 66px; margin-top: 34px;">
-                            <div class="bar-label">1.000</div>
-                            <div class="bar-label-2">Wort 2</div>
-                        </div>
-                        <div class="essay-bar" style="height: 60px; margin-top: 40px;">
-                            <div class="bar-label">900</div>
-                            <div class="bar-label-2">Wort 3</div>
-                        </div>
-                    </div>
+                    <bargraph bgheight="100" bgdata="essays.data['essay'+e.id]"></bargraph>
                 </div>
             </div>
         </div>
