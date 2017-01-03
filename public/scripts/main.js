@@ -7,13 +7,14 @@ OKC.controller("mainController",
 
 			var baseHeight = 100;
 
-			$scope.$on("featureupdate", function(event) {
+			$scope.$on("featureupdate", function(event, data) {
+				$scope.wantedFeatures = data;
 				getData();
 			});
 
 			$scope.$on("numberupdate", function(event, data) {
 				$scope.wantedNumber = data;
-				//getData();
+				getData();
 			});
 
 			$scope.$on("essayupdate", function(event, args) {
@@ -35,8 +36,7 @@ OKC.controller("mainController",
 					data: JSON.stringify({
 							number: $scope.wantedNumber,
 							essays: $scope.wantedEssays,
-							//features: $scope.wantedFeatures
-							features: {"drinks": "socially", "sex": "f"}
+							features: $scope.wantedFeatures
 						}),
 					dataType: "json",
 					contentType: 'application/json'

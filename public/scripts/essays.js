@@ -65,6 +65,7 @@ OKC.controller("essaysController",
 			$scope.$emit("essayupdate", vm.essays);
 		};
 		vm.updateNumber = function() {
+			console.log("number blur");
 			$scope.$emit("numberupdate", vm.number)
 		};
 		vm.baseHeight = 100;

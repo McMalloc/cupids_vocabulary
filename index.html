@@ -38,7 +38,8 @@
             <div ng-repeat="f in features.features" id="tile-feature{{f.id}}" ng-if="f.visible" class="col-sm-6 col-lg-4">
                     <div class="feature-tile">
                         <label for="{{f.name}}-feature-select">{{f.name}}</label>
-                        <select name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
+                        <select ng-change="updateFeatures()" name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
+                            <option>(no answer)</option>
                             <option ng-repeat="option in f.options">{{option}}</option>
                         </select>
                     </div>
@@ -63,7 +64,7 @@
                 </span>
                 <br />
                 <label for="wordnumber">Number of words: </label>
-                <input ng-change="essays.updateNumber()" style="width: 48px; text-align: center;" id="wordnumber" type="text" ng-model="essays.number" />
+                <input ng-blur="essays.updateNumber()" style="width: 48px; text-align: center;" id="wordnumber" type="text" ng-model="essays.number" />
             </div>
         </div>
 

@@ -5,118 +5,14 @@ require "sinatra"
 require "json"
 require "pry"
 
-$common_words = ["<br", "/>", "me", "-i", "class=\"ilink\"", "href=", "<a", "-", "so",
-"the",
-"of",
-"and",
-"to",
-"a",
-"in",
-"for",
-"is",
-"on",
-"that",
-"by",
-"this",
-"with",
-"i",
-"you",
-"it",
-"not",
-"or",
-"be",
-"are",
-"from",
-"at",
-"as",
-"your",
-"all",
-"have",
-"new",
-"more",
-"an",
-"was",
-"we",
-"will",
-"home",
-"can",
-"us",
-"about",
-"if",
-"page",
-"my",
-"has",
-"search",
-"free",
-"but",
-"our",
-"one",
-"other",
-"do",
-"no",
-"information",
-"time",
-"they",
-"site",
-"he",
-"up",
-"may",
-"what",
-"which",
-"their",
-"news",
-"out",
-"use",
-"any",
-"there",
-"see",
-"only",
-"so",
-"his",
-"when",
-"contact",
-"here",
-"business",
-"who",
-"web",
-"also",
-"now",
-"help",
-"i'm",
-"just",
-"get",
-"pm",
-"view",
-"online",
-"c",
-"e",
-"first",
-"am",
-"been",
-"would",
-"how",
-"were",
-"me",
-"s",
-"services",
-"some",
-"these",
-"click",
-"its",
-"like",
-"service",
-"x",
-"than",
-"find"]
-
-DB = Sequel.sqlite("profiles.db")
+DB = Sequel.sqlite("_profiles.db")
 $items = DB[:items]
 
 def countWords(string)
 	h = Hash.new
 	words = string.split
 	  words.each { |w|
-		next if $common_words.include? w
+		# next if $common_words.include? w
 		if h.has_key?(w)
 		  h[w] = h[w] + 1
 		else
@@ -132,11 +28,12 @@ end
 
 get "/about" do
 	@res = []
-	$items.filter(id: rand(0..59945)).map().each_with_index do |col, index|
+	$items.filter(id: rand(0..209)).map().each_with_index do |col, index|
 		@res[index] = col
 	end
 	erb :about, :locals => {
-		:record => @res
+		:record => @res,
+		:number => $items.count
 	}
 end
 
