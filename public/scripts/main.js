@@ -3,7 +3,10 @@ OKC.controller("mainController",
 
 			var updateGraphs = function (res) {
 				$scope.$broadcast("redraw", res.data);
+				$scope.loading = false;
 			};
+
+			$scope.loading = false;
 
 			var baseHeight = 100;
 
@@ -29,7 +32,15 @@ OKC.controller("mainController",
 			$scope.wantedFeatures = [];
 			$scope.wantedNumber = 3;
 
+			$scope.showTutorial = localStorage.getItem("showTut") === null;
+
+			$scope.hideTutorial = function() {
+				$scope.showTutorial = false;
+				localStorage.setItem("showTut", false);
+			};
+
 			var getData = function() {
+				$scope.loading = true;
 				$http({
 					method: "POST",
 					url: "/counts",

@@ -18,7 +18,7 @@ footer {
 .tile, .feature-tile, .essay-tile {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #eee;
-  padding: 12px;
+  padding: 8px;
   margin-bottom: 30px;
   position: relative; }
 
@@ -30,8 +30,8 @@ footer {
 .essay-bar {
   border-right: 2px solid white;
   box-sizing: border-box;
-  width: 33.3%;
   background-color: #333;
+  transition: height 0.5s;
   float: left;
   position: relative; }
 
@@ -47,31 +47,40 @@ footer {
 /* line 37, ../scss/_tiles.scss */
 .remove-btn {
   position: absolute;
-  top: 12px;
   padding-bottom: 2px;
   right: 12px;
   cursor: default;
   width: 15px;
   height: 15px;
   text-align: center; }
-  /* line 47, ../scss/_tiles.scss */
+  /* line 46, ../scss/_tiles.scss */
   .remove-btn:hover {
     text-decoration: underline; }
 
-/* line 52, ../scss/_tiles.scss */
+/* line 51, ../scss/_tiles.scss */
 .essay-bars {
   padding-bottom: 105px;
   border-bottom: 2px dotted #333;
-  margin-bottom: 3px; }
+  margin-bottom: 3px;
+  position: relative; }
+  /* line 57, ../scss/_tiles.scss */
+  .essay-bars .no-match-info {
+    text-align: center;
+    color: #737373;
+    font-style: italic;
+    width: 100%;
+    height: 60%;
+    padding-top: 10%;
+    position: absolute; }
 
-/* line 58, ../scss/_tiles.scss */
+/* line 69, ../scss/_tiles.scss */
 .bar-label {
   position: absolute;
   bottom: 3px;
   left: 3px;
   color: white; }
 
-/* line 65, ../scss/_tiles.scss */
+/* line 76, ../scss/_tiles.scss */
 .bar-label-2 {
   position: absolute;
   bottom: -28px;
@@ -94,8 +103,7 @@ tr {
 
 /* line 1, ../scss/_typography.scss */
 h3 {
-  padding-bottom: 12px;
-  border-bottom: 2px dashed #ccc; }
+  padding-bottom: 12px; }
 
 /* line 6, ../scss/_typography.scss */
 a {
@@ -113,14 +121,25 @@ input[type="checkbox"] {
 label {
   position: relative; }
 
-/* line 12, ../scss/_elements.scss */
+/* line 10, ../scss/_elements.scss */
+select[multiple] {
+  resize: vertical;
+  overflow: auto;
+  border: none; }
+
+/* line 16, ../scss/_elements.scss */
+option:checked {
+  background-color: #333;
+  color: white; }
+
+/* line 23, ../scss/_elements.scss */
 input[type="checkbox"]:checked + div {
   background-color: #333;
   color: white; }
-/* line 17, ../scss/_elements.scss */
+/* line 28, ../scss/_elements.scss */
 input[type="checkbox"]:checked:focus + div, input[type="checkbox"]:not(:checked):focus + div {
   color: green; }
-/* line 21, ../scss/_elements.scss */
+/* line 32, ../scss/_elements.scss */
 input[type="checkbox"] + div {
   border: 2px solid rgba(51, 51, 51, 0.7);
   padding: 1px 3px;
@@ -128,21 +147,85 @@ input[type="checkbox"] + div {
   cursor: pointer; }
 
 /* hover style just for information */
-/* line 31, ../scss/_elements.scss */
+/* line 42, ../scss/_elements.scss */
 label:hover:before {
   border: 1px solid #4778d9 !important; }
 
-/* line 8, ../scss/index.scss */
+/* line 46, ../scss/_elements.scss */
+.modal-bg, .tutorial {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.32) 0%, white 38%, white 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.32) 0%, white 38%, white 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.32) 0%, white 38%, white 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52ffffff', endColorstr='#ffffff',GradientType=0 );
+  /* IE6-9 */ }
+
+/* line 57, ../scss/_elements.scss */
+.spinner {
+  padding-top: 40vh;
+  text-align: center; }
+  /* line 61, ../scss/_elements.scss */
+  .spinner .spin {
+    font-size: 200%;
+    font-weight: 700; }
+
+/* line 67, ../scss/_elements.scss */
+.tutorial {
+  padding-top: 30vh; }
+  /* line 71, ../scss/_elements.scss */
+  .tutorial .got-it {
+    text-align: center; }
+    /* line 74, ../scss/_elements.scss */
+    .tutorial .got-it a {
+      font-size: 130%;
+      background-color: #333;
+      padding: 3px;
+      color: white;
+      text-decoration: none; }
+  /* line 83, ../scss/_elements.scss */
+  .tutorial .help-text {
+    height: 100%; }
+    /* line 86, ../scss/_elements.scss */
+    .tutorial .help-text p {
+      font-size: 120%;
+      padding: 8px; }
+
+/* line 2, ../scss/_animation.scss */
+.spin {
+  -webkit-animation: spin 0.6s infinite linear;
+  animation: spin 0.6s infinite linear; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+/* line 9, ../scss/index.scss */
 body {
   font-family: serif;
   letter-spacing: 1px; }
 
-/* line 13, ../scss/index.scss */
+/* line 14, ../scss/index.scss */
 label {
   font-weight: inherit;
   font-size: inherit; }
 
-/* line 20, ../scss/index.scss */
+/* line 21, ../scss/index.scss */
 select {
   border-color: rgba(0, 0, 0, 0.15); }
 

@@ -5,7 +5,7 @@ OKC.controller("featuresController",
 
 		//$scope.$emit("getdata", vm.features);
 
-		$scope.updateFeatures = function() {
+		var updateFeatures = function() {
 			var selectedFeatures = {};
 			_.each(_.filter(vm.features, "visible"), function(f) {
 				if (f.selected === "(no answer)") {
@@ -17,19 +17,27 @@ OKC.controller("featuresController",
 			$scope.$emit("featureupdate", selectedFeatures)
 		};
 
+		$scope.$watch("features", function() {
+			updateFeatures();
+		}, true);
+
+		vm.removeFeature = function(name) {
+			_.find(vm.features, {name: name}).visible = false;
+		};
+
 		vm.features = [
-			{
-				name: "age",
-				options: [
-						"<18",
-						"<25",
-						"<35",
-						"<45",
-						"<60",
-						"60+"
-				],
-				visible: false, selected: ""
-			},
+			//{
+			//	name: "age",
+			//	options: [
+			//			"<18",
+			//			"<25",
+			//			"<35",
+			//			"<45",
+			//			"<60",
+			//			"60+"
+			//	],
+			//	visible: false, selected: ""
+			//},
 			{
 				name: "body_type",
 				options: [

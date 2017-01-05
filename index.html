@@ -3,6 +3,7 @@
 <head>
     <title>Cupid's Vocabulary</title>
     <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="libs/jquery-3.1.1.min.js"></script>
     <script src="libs/angular.js"></script>
     <link rel="stylesheet" href="libs/bootstrap.css" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
@@ -16,29 +17,32 @@
 </head>
 <body ng-controller="mainController as main">
 
-<script type="text/template" id="feature-template">
-
-</script>
-
 <div style="height: 100%;" class="fluid-container">
+
+    <div ng-include="'partials/tutorial.html'"></div>
+    <div ng-if="loading" class="modal-bg spinner">
+        <div class="spin">.</div>
+        <p>Please wait</p>
+    </div>
 
     <div ng-controller="featuresController as features" class="col-sm-4">
         <h3>Features</h3>
         <div class="row select-row">
             <div class="col-md-12">
                 <span ng-repeat="f in features.features">
-                    <label id="checkbox-feature-{{e.id}}">
-                        <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.id}}"/><div>{{f.name}}</div>
+                    <label id="checkbox-feature-{{f.name}}">
+                        <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.name}}"/><div>{{f.name}}</div>
                     </label>
                 </span>
             </div>
         </div>
 
         <div id="feature-row" class="row">
-            <div ng-repeat="f in features.features" id="tile-feature{{f.id}}" ng-if="f.visible" class="col-sm-6 col-lg-4">
+            <div ng-repeat="f in features.features" id="tile-feature{{f.id}}" ng-if="f.visible" class="col-sm-12 col-lg-6">
                     <div class="feature-tile">
+                        <div ng-click="features.removeFeature(f.name)" class="remove-btn">&times;</div>
                         <label for="{{f.name}}-feature-select">{{f.name}}</label>
-                        <select ng-change="updateFeatures()" name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
+                        <select multiple ng-multiple="true" name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
                             <option>(no answer)</option>
                             <option ng-repeat="option in f.options">{{option}}</option>
                         </select>

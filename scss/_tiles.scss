@@ -1,7 +1,7 @@
 .tile {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
   border: 1px solid #eee;
-  padding: 12px;
+  padding: 8px;
   margin-bottom: 30px;
   position: relative;
 }
@@ -18,6 +18,7 @@
   border-right: 2px solid white;
   box-sizing: border-box;
   background-color: #333;
+  transition: height 0.5s;
   float:left;
   position: relative;
 }
@@ -35,7 +36,6 @@
 
 .remove-btn {
   position: absolute;
-  top: 12px;
   padding-bottom: 2px;
   right: 12px;
   cursor: default;
@@ -52,6 +52,18 @@
   padding-bottom: 105px;
   border-bottom: 2px dotted #333;
   margin-bottom: 3px;
+  position: relative;
+
+  .no-match-info {
+    text-align: center;
+    color: #737373;
+    font-style: italic;
+    width: 100%;
+    height: 60%;
+    padding-top: 10%;
+    position: absolute;
+  }
+
 }
 
 .bar-label {

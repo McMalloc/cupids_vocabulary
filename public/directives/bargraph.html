@@ -1,6 +1,7 @@
 <div class="essay-bars">
-    <div ng-repeat="worddata in data" class="essay-bar" ng-style="style[$index]">
+    <div ng-if="data.length > 0" ng-repeat="worddata in data" class="essay-bar" ng-style="style[$index]">
         <div class="bar-label">{{worddata[1]}}</div>
         <div class="bar-label-2">{{worddata[0]}}</div>
     </div>
+    <div class="no-match-info" ng-if="data.length === 0">(no matches)</div>
 </div>

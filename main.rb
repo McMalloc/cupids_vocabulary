@@ -5,7 +5,7 @@ require "sinatra"
 require "json"
 require "pry"
 
-DB = Sequel.sqlite("_profiles.db")
+DB = Sequel.sqlite("profiles.db")
 $items = DB[:items]
 
 def countWords(string)
@@ -44,6 +44,9 @@ post "/counts" do
 	@features = @request_payload["features"].inject({}){ |f,(k,v)| 
 		f[k.to_sym] = v; f
 	}
+	puts ""
+	puts @features
+	puts ""
 	@number = @request_payload["number"].to_i
 	@essays = @request_payload["essays"]
 	@selection = $items.filter(@features)

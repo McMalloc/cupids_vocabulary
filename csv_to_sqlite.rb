@@ -10,16 +10,16 @@ $common_words = [ /^my/, /^i'm/, /^i/, /^and/, /the/, /but/, / . /, " so ", " th
 
 puts "CSV to sqlite script. CC0 by Robert Wlcek."
 # connect to an in-memory database
-if File.exists? "_profiles.db"
-	File.delete("_profiles.db")
+if File.exists? "profiles.db"
+	File.delete("profiles.db")
 	puts "Old file deleted."
 end
-DB = Sequel.sqlite("_profiles.db")
+DB = Sequel.sqlite("profiles.db")
 items = DB[:items]
 puts "Created table."
 
 puts "Loading csv table ..."
-csv = CSV.table( "_profiles.csv")
+csv = CSV.table( "profiles.csv")
 headers = csv.headers()
 puts "Loading complete. Inserting rows."
 # create an items table
@@ -34,8 +34,8 @@ $total = csv.length.to_f
 
 csv.each_with_index do |row, i|
   record = Hash.new
-  if i % 5 == 0 
-	print "Progress: " +  ((i / $total) * 100).to_i.to_s + "%\r"
+  if i % 10 == 0 
+	print "          " +  i.to_s + " / " + $total.to_s + " -- " + ((i / $total) * 100).to_i.to_s + "%\r"
   end
   headers.each_with_index do |header, j|
 	# binding.pry

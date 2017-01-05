@@ -7,6 +7,17 @@ label {
   position: relative;
 }
 
+select[multiple] {
+  resize: vertical;
+  overflow: auto;
+  border: none;
+}
+
+option:checked {
+  background-color: #333;
+  color: white;
+}
+
 input[type="checkbox"] {
 
   &:checked + div {
@@ -30,4 +41,51 @@ input[type="checkbox"] {
 /* hover style just for information */
 label:hover:before {
   border: 1px solid #4778d9!important;
+}
+
+.modal-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  background: -moz-linear-gradient(top, rgba(255,255,255,0.32) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0.32) 0%,rgba(255,255,255,1) 38%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255,255,255,0.32) 0%,rgba(255,255,255,1) 38%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.spinner {
+  padding-top: 40vh;
+  text-align: center;
+
+  .spin {
+    font-size: 200%;
+    font-weight: 700;
+  }
+}
+
+.tutorial {
+  @extend .modal-bg;
+  padding-top: 30vh;
+
+  .got-it {
+    text-align: center;
+
+    a {
+      font-size: 130%;
+      background-color: #333;
+      padding: 3px;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .help-text {
+    height: 100%;
+
+    p {
+      font-size: 120%;
+      padding: 8px;
+    }
+  }
 }
