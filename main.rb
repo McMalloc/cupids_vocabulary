@@ -28,7 +28,7 @@ end
 
 get "/about" do
 	@res = []
-	$items.filter(id: rand(0..209)).map().each_with_index do |col, index|
+	$items.filter(id: rand(0..$items.count-1)).map().each_with_index do |col, index|
 		@res[index] = col
 	end
 	erb :about, :locals => {
