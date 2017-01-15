@@ -14,13 +14,18 @@
                 </span>
             <br />
             <label for="wordnumber">Number of words: </label>
-            <input ng-blur="essays.updateNumber()" style="width: 48px; text-align: center;" id="wordnumber" type="text" ng-model="essays.number" />
+            <input
+                    ng-blur="essays.updateNumber()"
+                    style="width: 48px; text-align: center;"
+                    id="wordnumber"
+                    type="text"
+                    ng-model="essays.number" />
         </div>
     </div>
 
     <div id="essay-row" class="row">
         <div ng-repeat="e in essays.essays" ng-if="e.visible">
-            <div id="tile-essay{{e.id}}" class="col-sm-6" ng-class="{'col-lg-4': essays.frozen}">
+            <div id="tile-essay{{e.id}}" class="col-md-6 col-sm-12">
                 <div ng-if="essays.data['essay'+e.id]" class="essay-tile">
                     <div class="remove-btn">
                         <a href="#" class="covered-link" ng-click="essays.removeEssay(e.id)">&times;</a>
@@ -29,7 +34,7 @@
                     <bargraph bgheight="100" bgdata="essays.data['essay'+e.id]"></bargraph>
                 </div>
             </div>
-            <div id="tile-essay{{e.id}}-frozen" ng-if="essays.frozen" class="col-sm-6">
+            <div id="tile-essay{{e.id}}-frozen" ng-if="essays.frozen" class="col-md-6 col-sm-12">
                 <div ng-if="essays.frozenData['essay'+e.id]" class="essay-tile essay-tile-frozen">
                     <p>{{e.name}} &#10052;</p>
                     <bargraph bgheight="100" bgdata="essays.frozenData['essay'+e.id]"></bargraph>

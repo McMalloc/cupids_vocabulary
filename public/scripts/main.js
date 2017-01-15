@@ -30,7 +30,7 @@ OKC.controller("mainController",
 
 			$scope.wantedEssays = [];
 			$scope.wantedFeatures = [];
-			$scope.wantedNumber = 3;
+			$scope.wantedNumber = 5;
 
 			$scope.showTutorial = localStorage.getItem("showTut") === null;
 

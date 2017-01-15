@@ -78,7 +78,7 @@ OKC.controller("essaysController",
 			$scope.$emit("numberupdate", vm.number)
 		};
 		vm.baseHeight = 100;
-		vm.number = 3;
+		vm.number = 5;
 
 		vm.removeEssay = function(id) {
 			_.find(vm.essays, {id: id}).visible = false;
