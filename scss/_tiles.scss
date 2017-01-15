@@ -10,8 +10,23 @@
   @extend .tile;
 }
 
-.feature-tile select {
-  width: 100%;
+
+
+.feature-tile {
+  select {
+    width: 100%;
+  }
+
+  label {
+    padding-left: 15px;
+    border-left: 15px solid $grey;
+  }
+
+  &.frozen {
+    label {
+      border-left: 15px solid $frozen;
+    }
+  }
 }
 
 .essay-bar {
@@ -21,6 +36,10 @@
   transition: height 0.5s;
   float:left;
   position: relative;
+}
+
+.essay-tile-frozen .essay-bar {
+  background-color: $frozen;
 }
 
 .essay-tile {

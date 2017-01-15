@@ -1,9 +1,23 @@
 OKC.controller("featuresController",
-	["$scope", function ($scope) {
+	["$scope", "frozen", function ($scope, frozen) {
 
 		var vm = this;
+		vm.frozen = false;
 
-		//$scope.$emit("getdata", vm.features);
+		vm.freezeBtnCls = {
+			'active': vm.frozen == true,
+			'inactive': vm.frozen == false
+		};
+
+		vm.freeze = function() {
+			vm.frozen = !vm.frozen;
+			if (vm.frozen) {
+				vm.frozenFeatures = _.filter(vm.features, "visible")
+			}
+			frozen.freeze();
+		};
+
+		vm.frozenFeatures = [];
 
 		var updateFeatures = function() {
 			var selectedFeatures = {};
@@ -14,7 +28,7 @@ OKC.controller("featuresController",
 					selectedFeatures[f.name] = f.selected;
 				}
 			});
-			$scope.$emit("featureupdate", selectedFeatures)
+			$scope.$emit("featureupdate", selectedFeatures);
 		};
 
 		$scope.$watch("features", function() {

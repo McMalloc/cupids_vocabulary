@@ -1,0 +1,36 @@
+<div ng-controller="featuresController as features" class="col-sm-4">
+    <h3>Features <span class="freeze-features-btn" ng-class="{'active': !features.frozen,'inactive': features.frozen}"  ng-click="features.freeze()">&#10052;</span></h3>
+    <div class="row select-row">
+        <div class="col-md-12">
+                <span ng-repeat="f in features.features">
+                    <label id="checkbox-feature-{{f.name}}">
+                        <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.name}}"/><div>{{f.name}}</div>
+                    </label>
+                </span>
+        </div>
+    </div>
+
+    <div ng-if="features.frozen" id="feature-row-frozen" class="row">
+        <div ng-repeat="ff in features.frozenFeatures" class="col-sm-12 col-lg-6">
+            <div class="feature-tile frozen">
+                <label>{{ff.name}}</label>
+                <p>
+                    <span ng-repeat="selected in ff.selected">{{selected}}<span ng-if="!$last"> &bull; </span></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="feature-row" class="row">
+        <div ng-repeat="f in features.features" id="tile-feature{{f.id}}" ng-if="f.visible" class="col-sm-12 col-lg-6">
+            <div class="feature-tile">
+                <div ng-click="features.removeFeature(f.name)" class="remove-btn">&times;</div>
+                <label for="{{f.name}}-feature-select">{{f.name}}</label>
+                <select multiple ng-multiple="true" name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
+                    <option>(no answer)</option>
+                    <option ng-repeat="option in f.options">{{option}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

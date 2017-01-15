@@ -22,11 +22,18 @@ footer {
   margin-bottom: 30px;
   position: relative; }
 
-/* line 13, ../scss/_tiles.scss */
+/* line 16, ../scss/_tiles.scss */
 .feature-tile select {
   width: 100%; }
+/* line 20, ../scss/_tiles.scss */
+.feature-tile label {
+  padding-left: 15px;
+  border-left: 15px solid #333; }
+/* line 26, ../scss/_tiles.scss */
+.feature-tile.frozen label {
+  border-left: 15px solid #5bc0de; }
 
-/* line 17, ../scss/_tiles.scss */
+/* line 32, ../scss/_tiles.scss */
 .essay-bar {
   border-right: 2px solid white;
   box-sizing: border-box;
@@ -35,16 +42,20 @@ footer {
   float: left;
   position: relative; }
 
-/* line 26, ../scss/_tiles.scss */
+/* line 41, ../scss/_tiles.scss */
+.essay-tile-frozen .essay-bar {
+  background-color: #5bc0de; }
+
+/* line 45, ../scss/_tiles.scss */
 .essay-tile {
   padding-bottom: 30px; }
-  /* line 30, ../scss/_tiles.scss */
+  /* line 49, ../scss/_tiles.scss */
   .essay-tile p {
     white-space: nowrap;
     overflow: hidden;
     margin-right: 20px; }
 
-/* line 37, ../scss/_tiles.scss */
+/* line 56, ../scss/_tiles.scss */
 .remove-btn {
   position: absolute;
   padding-bottom: 2px;
@@ -53,17 +64,17 @@ footer {
   width: 15px;
   height: 15px;
   text-align: center; }
-  /* line 46, ../scss/_tiles.scss */
+  /* line 65, ../scss/_tiles.scss */
   .remove-btn:hover {
     text-decoration: underline; }
 
-/* line 51, ../scss/_tiles.scss */
+/* line 70, ../scss/_tiles.scss */
 .essay-bars {
   padding-bottom: 105px;
   border-bottom: 2px dotted #333;
   margin-bottom: 3px;
   position: relative; }
-  /* line 57, ../scss/_tiles.scss */
+  /* line 76, ../scss/_tiles.scss */
   .essay-bars .no-match-info {
     text-align: center;
     color: #737373;
@@ -73,14 +84,14 @@ footer {
     padding-top: 10%;
     position: absolute; }
 
-/* line 69, ../scss/_tiles.scss */
+/* line 88, ../scss/_tiles.scss */
 .bar-label {
   position: absolute;
   bottom: 3px;
   left: 3px;
   color: white; }
 
-/* line 76, ../scss/_tiles.scss */
+/* line 95, ../scss/_tiles.scss */
 .bar-label-2 {
   position: absolute;
   bottom: -28px;
@@ -118,28 +129,45 @@ input[type="checkbox"] {
   display: none; }
 
 /* line 6, ../scss/_elements.scss */
+.freeze-features-btn {
+  float: right;
+  border-radius: 3px;
+  height: 27px;
+  width: 27px;
+  text-align: center;
+  cursor: pointer; }
+  /* line 14, ../scss/_elements.scss */
+  .freeze-features-btn.inactive {
+    background-color: #5bc0de;
+    color: white; }
+  /* line 19, ../scss/_elements.scss */
+  .freeze-features-btn.active {
+    background-color: white;
+    color: #5bc0de; }
+
+/* line 25, ../scss/_elements.scss */
 label {
   position: relative; }
 
-/* line 10, ../scss/_elements.scss */
+/* line 29, ../scss/_elements.scss */
 select[multiple] {
   resize: vertical;
   overflow: auto;
   border: none; }
 
-/* line 16, ../scss/_elements.scss */
+/* line 35, ../scss/_elements.scss */
 option:checked {
   background-color: #333;
   color: white; }
 
-/* line 23, ../scss/_elements.scss */
+/* line 42, ../scss/_elements.scss */
 input[type="checkbox"]:checked + div {
   background-color: #333;
   color: white; }
-/* line 28, ../scss/_elements.scss */
+/* line 47, ../scss/_elements.scss */
 input[type="checkbox"]:checked:focus + div, input[type="checkbox"]:not(:checked):focus + div {
   color: green; }
-/* line 32, ../scss/_elements.scss */
+/* line 51, ../scss/_elements.scss */
 input[type="checkbox"] + div {
   border: 2px solid rgba(51, 51, 51, 0.7);
   padding: 1px 3px;
@@ -147,11 +175,11 @@ input[type="checkbox"] + div {
   cursor: pointer; }
 
 /* hover style just for information */
-/* line 42, ../scss/_elements.scss */
+/* line 61, ../scss/_elements.scss */
 label:hover:before {
   border: 1px solid #4778d9 !important; }
 
-/* line 46, ../scss/_elements.scss */
+/* line 65, ../scss/_elements.scss */
 .modal-bg, .tutorial {
   position: absolute;
   height: 100%;
@@ -166,32 +194,32 @@ label:hover:before {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52ffffff', endColorstr='#ffffff',GradientType=0 );
   /* IE6-9 */ }
 
-/* line 57, ../scss/_elements.scss */
+/* line 76, ../scss/_elements.scss */
 .spinner {
   padding-top: 40vh;
   text-align: center; }
-  /* line 61, ../scss/_elements.scss */
+  /* line 80, ../scss/_elements.scss */
   .spinner .spin {
     font-size: 200%;
     font-weight: 700; }
 
-/* line 67, ../scss/_elements.scss */
+/* line 86, ../scss/_elements.scss */
 .tutorial {
   padding-top: 30vh; }
-  /* line 71, ../scss/_elements.scss */
+  /* line 90, ../scss/_elements.scss */
   .tutorial .got-it {
     text-align: center; }
-    /* line 74, ../scss/_elements.scss */
+    /* line 93, ../scss/_elements.scss */
     .tutorial .got-it a {
       font-size: 130%;
       background-color: #333;
       padding: 3px;
       color: white;
       text-decoration: none; }
-  /* line 83, ../scss/_elements.scss */
+  /* line 102, ../scss/_elements.scss */
   .tutorial .help-text {
     height: 100%; }
-    /* line 86, ../scss/_elements.scss */
+    /* line 105, ../scss/_elements.scss */
     .tutorial .help-text p {
       font-size: 120%;
       padding: 8px; }

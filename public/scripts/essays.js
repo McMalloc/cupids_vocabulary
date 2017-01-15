@@ -1,5 +1,5 @@
 OKC.controller("essaysController",
-	["$scope", function ($scope) {
+	["$scope", "frozen", function ($scope, frozen) {
 
 		var vm = this;
 		vm.essays = [
@@ -55,10 +55,19 @@ OKC.controller("essaysController",
 			}
 		];
 		vm.data = [];
+		vm.frozen = false;
 
 		$scope.$on("redraw", function(event, data) {
-			console.log("redraw");
 			vm.data = data;
+		});
+
+		$scope.$on("freeze!", function() {
+			vm.frozenData = _.clone(vm.data);
+			vm.frozen = true;
+		});
+
+		$scope.$on("thaw!", function() {
+			vm.frozen = false;
 		});
 
 		vm.updateData = function() {
@@ -76,5 +85,3 @@ OKC.controller("essaysController",
 		};
 
 	}]);
-
-var json = {"essay1":[["work",252],["working",242],["trying",178]]};

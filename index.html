@@ -21,68 +21,19 @@
 
     <div ng-include="'partials/tutorial.html'"></div>
     <div ng-if="loading" class="modal-bg spinner">
-        <div class="spin">.</div>
+        <div>
+            <img alt="Loader"
+                 src="data:image/gif;base64,R0lGODlhCAAIAJECACo/Vf///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQwQTAzN0FDREI1RDExRTZCRkUzOEQ0QjA4QkMxRkNEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQwQTAzN0FEREI1RDExRTZCRkUzOEQ0QjA4QkMxRkNEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDBBMDM3QUFEQjVEMTFFNkJGRTM4RDRCMDhCQzFGQ0QiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NDBBMDM3QUJEQjVEMTFFNkJGRTM4RDRCMDhCQzFGQ0QiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQJCgACACwAAAAACAAIAAACDYQlpoB7+ZCclCobmykAIfkECQoAAgAsAAAAAAgACAAAAg6UDXmom7CiFI89SC9+BQAh+QQJCgACACwAAAAACAAIAAACDYSFaJB6DSNcbjFh3yoAIfkEBQoAAgAsAAAAAAgACAAAAg2EJaaAe/mQnFTV2LAoADs=" />
+        </div>
         <p>Please wait</p>
     </div>
 
-    <div ng-controller="featuresController as features" class="col-sm-4">
-        <h3>Features</h3>
-        <div class="row select-row">
-            <div class="col-md-12">
-                <span ng-repeat="f in features.features">
-                    <label id="checkbox-feature-{{f.name}}">
-                        <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.name}}"/><div>{{f.name}}</div>
-                    </label>
-                </span>
-            </div>
-        </div>
-
-        <div id="feature-row" class="row">
-            <div ng-repeat="f in features.features" id="tile-feature{{f.id}}" ng-if="f.visible" class="col-sm-12 col-lg-6">
-                    <div class="feature-tile">
-                        <div ng-click="features.removeFeature(f.name)" class="remove-btn">&times;</div>
-                        <label for="{{f.name}}-feature-select">{{f.name}}</label>
-                        <select multiple ng-multiple="true" name="{{f.name}}" class="feature-select" ng-model="f.selected" id="{{f.name}}-feature-select">
-                            <option>(no answer)</option>
-                            <option ng-repeat="option in f.options">{{option}}</option>
-                        </select>
-                    </div>
-            </div>
-        </div>
-    </div>
+    <div ng-include="'partials/features.html'"></div>
 
     <!--ESSAYS-->
-    <div ng-controller="essaysController as essays" class="col-sm-8">
-        <h3>Essays</h3>
-        <!--<pre>{{essays.essays | json}}</pre>-->
-        <div class="row select-row">
-            <div class="col-md-12">
-                <span ng-repeat="e in essays.essays">
-                    <label id="checkbox-essay-{{e.id}}">
-                        <input
-                                ng-change="essays.updateData()"
-                                ng-model="e.visible"
-                                type="checkbox"
-                                for="checkbox-essay-{{e.id}}"/><div>{{e.name}}</div>
-                    </label>
-                </span>
-                <br />
-                <label for="wordnumber">Number of words: </label>
-                <input ng-blur="essays.updateNumber()" style="width: 48px; text-align: center;" id="wordnumber" type="text" ng-model="essays.number" />
-            </div>
-        </div>
+    <div ng-include="'partials/essays.html'"></div>
 
 
-        <div id="essay-row" class="row">
-            <div ng-repeat="e in essays.essays" id="tile-essay{{e.id}}" ng-if="e.visible" class="col-sm-6 col-lg-4">
-                <div ng-if="essays.data['essay'+e.id]" class="essay-tile">
-                    <div ng-click="essays.removeEssay(e.id)" class="remove-btn">&times;</div>
-                    <p>{{e.name}}</p>
-                    <bargraph bgheight="100" bgdata="essays.data['essay'+e.id]"></bargraph>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <footer>
     <div class="container">

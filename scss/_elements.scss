@@ -3,6 +3,25 @@ input[type="checkbox"] {
   display:none;
 }
 
+.freeze-features-btn {
+  float: right;
+  border-radius: 3px;
+  height: 27px;
+  width: 27px;
+  text-align: center;
+  cursor: pointer;
+
+  &.inactive {
+    background-color: $frozen;
+    color: white;
+  }
+
+  &.active {
+    background-color: white;
+    color: $frozen;
+  }
+}
+
 label {
   position: relative;
 }
