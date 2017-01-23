@@ -22,8 +22,12 @@ def countWords(string)
 	return h.sort_by { |word, count| -count }
 end
 
-get "/" do
+get "/vis" do
 	send_file "index.html"
+end
+
+get "/" do
+	send_file "welcome.html"
 end
 
 get "/about" do
@@ -56,6 +60,7 @@ post "/counts" do
 		@res[("essay" + essay.to_s).to_sym] = countWords(string)[0..@number-1]
 	}
 	# binding.pry
+	@res["nr_of_records".to_s] = @selection.count
 	@res.to_json
 end
 

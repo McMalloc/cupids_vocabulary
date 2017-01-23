@@ -12,7 +12,7 @@ OKC.controller("featuresController",
 		vm.freeze = function() {
 			vm.frozen = !vm.frozen;
 			if (vm.frozen) {
-				vm.frozenFeatures = _.filter(vm.features, "visible")
+				vm.frozenFeatures = _.clone(_.filter(vm.features, "visible"))
 			}
 			frozen.freeze();
 		};
@@ -28,6 +28,7 @@ OKC.controller("featuresController",
 					selectedFeatures[f.name] = f.selected;
 				}
 			});
+
 			$scope.$emit("featureupdate", selectedFeatures);
 		};
 

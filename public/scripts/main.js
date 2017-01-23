@@ -40,6 +40,7 @@ OKC.controller("mainController",
 			};
 
 			var getData = function() {
+				if ($scope.wantedEssays.length === 0) return;
 				$scope.loading = true;
 				$http({
 					method: "POST",

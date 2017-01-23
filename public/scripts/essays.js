@@ -58,6 +58,7 @@ OKC.controller("essaysController",
 		vm.frozen = false;
 
 		$scope.$on("redraw", function(event, data) {
+			vm.nrOfRecords = data.nr_of_records;
 			vm.data = data;
 		});
 
@@ -74,7 +75,6 @@ OKC.controller("essaysController",
 			$scope.$emit("essayupdate", vm.essays);
 		};
 		vm.updateNumber = function() {
-			console.log("number blur");
 			$scope.$emit("numberupdate", vm.number)
 		};
 		vm.baseHeight = 100;

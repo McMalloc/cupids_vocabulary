@@ -1,9 +1,15 @@
 <div ng-controller="featuresController as features" class="col-sm-4">
-    <h3>Features <span class="freeze-features-btn" ng-class="{'active': !features.frozen,'inactive': features.frozen}"  ng-click="features.freeze()">&#10052;</span></h3>
+    <h3>User Features
+        <span
+                title="Use this button to 'freeze' the currect feature filter selection. You can change the features and look at the new results but you will still be able to compare the new results with the frozen ones."
+                class="freeze-features-btn"
+                ng-class="{'active': !features.frozen,'inactive': features.frozen}"
+                ng-click="features.freeze()">&#10052;
+        </span></h3>
     <div class="row select-row">
         <div class="col-md-12">
                 <span ng-repeat="f in features.features">
-                    <label id="checkbox-feature-{{f.name}}">
+                    <label title="Select {{f.name}} as a filter for word counting. Only user records that match the selected filters will be taken into account." id="checkbox-feature-{{f.name}}">
                         <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.name}}"/><div>{{f.name}}</div>
                     </label>
                 </span>
@@ -12,7 +18,7 @@
 
     <div ng-if="features.frozen" id="feature-row-frozen" class="row">
         <div ng-repeat="ff in features.frozenFeatures" class="col-sm-12 col-lg-6">
-            <div class="feature-tile frozen">
+            <div title="This is a frozen feature filter. Results for frozen filters are the blue bar graphs on the right." class="feature-tile frozen">
                 <label>{{ff.name}}</label>
                 <p>
                     <span ng-repeat="selected in ff.selected">{{selected}}<span ng-if="!$last"> &bull; </span></span>
