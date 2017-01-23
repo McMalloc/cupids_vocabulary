@@ -22,12 +22,12 @@ def countWords(string)
 	return h.sort_by { |word, count| -count }
 end
 
-get "/vis" do
-	send_file "index.html"
-end
-
 get "/" do
 	send_file "welcome.html"
+end
+
+get "/vis" do
+	send_file "index.html"
 end
 
 get "/about" do

@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="okcVis">
+<head>
+    <title>About Cupid's Vocabulary</title>
+    <link rel="stylesheet" href="libs/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script src="libs/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function(){
+            var decR = 31;
+            var decG = 31;
+            var decB = 31;
+            var flipR = true;
+            var flipG = true;
+            var flipB = true;
+            var hex = "";
+            setInterval(function(){
+                if ((decR > 235.0) || (decR < 30.0)) {
+                    flipR = !flipR;
+                    flipR ? decR = decR = 31 : decR = 235;
+                }
+                flipR ? decR = decR+1 : decR = decR-3;
+                if ((decG > 235.0) || (decG < 30.0)) {
+                    flipG = !flipG;
+                    flipG ? decG = decG = 31 : decG = 235;
+                }
+                flipG ? decG = decG+2 : decG = decG-1.5;
+                if ((decB > 235.0) || (decB < 30.0)) {
+                    flipB = !flipB;
+                    flipB ? decB = decB = 31 : decB = 235;
+                }
+                flipB ? decB = decB+3 : decB = decB-1;
+                hex = (parseInt(decR)).toString(16) +
+                        (parseInt(decG)).toString(16) +
+                        (parseInt(decB)).toString(16);
+                $("#hearts").css("color", "#"+hex);
+            }, 100)
+        });
+    </script>
+</head>
+
+<div class="container">
+
+    <div class="row">
+        <h1 id="hearts" style="transition: color 0.1s; text-align: center; font-size: 3000%;">&#128149;</h1>
+        <p style="text-align: center; font-size: 200%;">
+            Your soul mate could be reading a description of yourself <em>right now</em>.
+            Have you chosen the right words? Who do you want to find and would she or he use the same words?<br />
+            <a href="/vis">Find out which words certain people use to describe themselves.</a>
+        </p>
+    </div>
+
+    <div class="row" style="margin-top: 48px;">
+
+    </div>
+</div>
+</body>
+</html>
