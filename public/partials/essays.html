@@ -4,7 +4,7 @@
     <div class="row select-row">
         <div class="col-md-12">
                 <span ng-repeat="e in essays.essays">
-                    <label title="What of these free text topics are you interested in? What words do certain people (matching the filters on the left) use to describe themselves?" id="checkbox-essay-{{e.id}}">
+                    <label title="Which of these free text topics are you interested in? Which words do certain people (matching the filters on the left) use to describe themselves?" id="checkbox-essay-{{e.id}}">
                         <input
                                 ng-change="essays.updateData()"
                                 ng-model="e.visible"

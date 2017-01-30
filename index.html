@@ -16,10 +16,10 @@
 
 </head>
 <body ng-controller="mainController as main">
-
+<div ng-include="'partials/tutorial.html'"></div>
 <div style="height: 100%;" class="fluid-container">
 
-    <div ng-include="'partials/tutorial.html'"></div>
+
     <div ng-if="loading" class="modal-bg spinner">
         <div>
             <img alt="Loader"

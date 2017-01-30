@@ -1,27 +1,28 @@
-<div ng-if="showTutorial" class="modal-bg tutorial">
+<div ng-if="showTutorial" class="modal-bg tutorial container">
     <div class="row">
-        <div class="col-sm-4 help-text">
+        <div class="col-sm-6 col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3 help-text">
             <p>
                 Every OKCupid user is asked to add some general information to their profile.
                 For the traits and features listed in this column the user can select from a finite pool of answers,
                 like "yes" and "when drinking" for the feature <em>smokes</em>.
             </p>
-        </div>
-        <div class="col-sm-8 help-text">
             <p>
-                Additionally users can write in their own words about themselves. They are given certain categories&mdash;the <em>essays</em> listed above&mdash;to express a more personal side.
+                Selecting a <span class="custom-checkbox">Feature</span>
+                will show the words which were most frequently used by the users to describe themselves.
             </p>
-        </div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-12 help-text">
+            <hr />
             <p>
-                Selecting an <em>essay</em> will show the words which were most frequently used by the users to describe themselves.
+                Additionally users can write in their own words about themselves. They are given certain categories&mdash;the <em>essays</em>&mdash;to express a more personal side.
             </p>
             <p>
-                Selecting <em>features</em> will filter the essays that are taken into account. For example, selecting "asian" for the
+                Selecting <span class="custom-checkbox">Essay</span>
+                will filter the essays that are taken into account. For example, selecting "asian" for the
                 feature "ethnicity" will only count the words of users who have selected asian as part of their ethnicity.
+            </p>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 help-text">
+            <p>
+                Clicking the snow flake &#10052; in the Features column will freeze the current feature filter. You can change the features and look at the new results but you will still be able to compare the new results with the frozen ones.
             </p>
             <p>
                 Tip: You can select multiple features by pressing Ctrl / Cmd while clicking when it makes sense (people can stem from multiple ethnicities but cannot be a smoker and a non-smoker at the same time.)

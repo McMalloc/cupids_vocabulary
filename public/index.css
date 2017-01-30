@@ -160,18 +160,18 @@ option:checked {
   background-color: #333;
   color: white; }
 
-/* line 42, ../scss/_elements.scss */
+/* line 40, ../scss/_elements.scss */
+.custom-checkbox, input[type="checkbox"] + div {
+  border: 2px solid rgba(51, 51, 51, 0.7);
+  padding: 1px 3px;
+  box-sizing: border-box; }
+
+/* line 48, ../scss/_elements.scss */
 input[type="checkbox"]:checked + div {
   background-color: #333;
   color: white; }
-/* line 47, ../scss/_elements.scss */
-input[type="checkbox"]:checked:focus + div, input[type="checkbox"]:not(:checked):focus + div {
-  color: green; }
-/* line 51, ../scss/_elements.scss */
+/* line 53, ../scss/_elements.scss */
 input[type="checkbox"] + div {
-  border: 2px solid rgba(51, 51, 51, 0.7);
-  padding: 1px 3px;
-  box-sizing: border-box;
   cursor: pointer; }
 
 /* hover style just for information */
@@ -185,11 +185,11 @@ label:hover:before {
   height: 100%;
   width: 100%;
   z-index: 9999;
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.32) 0%, white 38%, white 100%);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.32) 0%, white 20%, white 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.32) 0%, white 38%, white 100%);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.32) 0%, white 20%, white 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.32) 0%, white 38%, white 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.32) 0%, white 20%, white 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52ffffff', endColorstr='#ffffff',GradientType=0 );
   /* IE6-9 */ }
@@ -205,23 +205,24 @@ label:hover:before {
 
 /* line 86, ../scss/_elements.scss */
 .tutorial {
-  padding-top: 30vh; }
-  /* line 90, ../scss/_elements.scss */
+  background-color: white;
+  padding-top: 20vh; }
+  /* line 91, ../scss/_elements.scss */
   .tutorial .got-it {
     text-align: center; }
-    /* line 93, ../scss/_elements.scss */
+    /* line 94, ../scss/_elements.scss */
     .tutorial .got-it a {
       font-size: 130%;
       background-color: #333;
       padding: 3px;
       color: white;
       text-decoration: none; }
-  /* line 102, ../scss/_elements.scss */
+  /* line 103, ../scss/_elements.scss */
   .tutorial .help-text {
     height: 100%; }
-    /* line 105, ../scss/_elements.scss */
+    /* line 106, ../scss/_elements.scss */
     .tutorial .help-text p {
-      font-size: 120%;
+      font-size: 100%;
       padding: 8px; }
 
 /* line 2, ../scss/_animation.scss */

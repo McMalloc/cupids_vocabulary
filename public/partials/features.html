@@ -9,8 +9,8 @@
     <div class="row select-row">
         <div class="col-md-12">
                 <span ng-repeat="f in features.features">
-                    <label title="Select {{f.name}} as a filter for word counting. Only user records that match the selected filters will be taken into account." id="checkbox-feature-{{f.name}}">
-                        <input ng-model="f.visible" type="checkbox" for="checkbox-feature-{{f.name}}"/><div>{{f.name}}</div>
+                    <label title="Select {{f.name}} as a filter for word counting. Only user records that match the selected filters will be taken into account." for="checkbox-feature-{{f.name}}">
+                        <input ng-model="f.visible" type="checkbox" id="checkbox-feature-{{f.name}}"/><div>{{f.name}}</div>
                     </label>
                 </span>
         </div>

@@ -37,6 +37,12 @@ option:checked {
   color: white;
 }
 
+.custom-checkbox {
+  border: 2px solid rgba($grey, 0.7);
+  padding: 1px 3px;
+  box-sizing: border-box;
+}
+
 input[type="checkbox"] {
 
   &:checked + div {
@@ -44,14 +50,8 @@ input[type="checkbox"] {
     color: white;
   }
 
-  &:checked:focus + div, &:not(:checked):focus + div {
-    color: green;
-  }
-
   & + div {
-    border: 2px solid rgba($grey, 0.7);
-    padding: 1px 3px;
-    box-sizing: border-box;
+    @extend .custom-checkbox;
     cursor: pointer;
   }
 
@@ -67,9 +67,9 @@ label:hover:before {
   height: 100%;
   width: 100%;
   z-index: 9999;
-  background: -moz-linear-gradient(top, rgba(255,255,255,0.32) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(255,255,255,0.32) 0%,rgba(255,255,255,1) 38%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(255,255,255,0.32) 0%,rgba(255,255,255,1) 38%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(top, rgba(255,255,255,0.32) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0.32) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255,255,255,0.32) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
 
@@ -85,7 +85,8 @@ label:hover:before {
 
 .tutorial {
   @extend .modal-bg;
-  padding-top: 30vh;
+  background-color: white;
+  padding-top: 20vh;
 
   .got-it {
     text-align: center;
@@ -103,7 +104,7 @@ label:hover:before {
     height: 100%;
 
     p {
-      font-size: 120%;
+      font-size: 100%;
       padding: 8px;
     }
   }
