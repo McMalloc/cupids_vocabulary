@@ -3,8 +3,6 @@ require "rubygems"
 require "sequel"
 require "pry"
 
-
-
 $common_symbols = ["<br", "/>", "-i", "class=\"ilink\"", "href=", "<a", "-", ">", "-", ".", ",", "*", "(", ")", "/", ";", "!", "?", "+", "=", ":"]
 $common_words = [ /^my/, /^i'm/, /^i/, /^and/, /the/, /but/, / . /, " so ", " the ", " of ", " and ", " to ", " in ", " for ", " is ", " on ", " that ", " by ", " this ", " with ", " you ", " it ", " not ", " or ", " be ", " are ", " from ", " at ", " as ", " your ", " all ", " have ", " new ", " more ", " an ", " was ", " we ", " will ", " home ", " can ", " us ", " about ", " if ", " page ", " my ", " has ", " search ", " free ", " but ", " our ", " one ", " other ", " do ", " no ", " information ", " time ", " they ", " site ", " he ", " up ", " may ", " what ", " which ", " their ", " news ", " out ", " use ", " any ", " there ", " see ", " only ", " so ", " his ", " when ", " contact ", " here ", " business ", " who ", " web ", " also ", " now ", " help ", " i m ", " just ", " get ", " pm ", " view ", " online ", " first ", " am ", " been ", " would ", " how ", " were ", " me ", " services ", " some ", " these ", " click ", " its ", "\"", " like ", " service ", " x ", " than ", " find ", " i'm ", " it's ", " you're " ]
 
